@@ -1,0 +1,52 @@
+{
+  "name": "@australiangreens/eslint-plugin-ag-internal",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "homepage": "https://github.com/australiangreens/eslint-plugin-ag-internal#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/australiangreens/eslint-plugin-ag-internal"
+  },
+  "description": "Internal linting configuration",
+  "author": "The Australian Greens <webops@greens.org.au>",
+  "contributors": [
+    "Anthony Blond <anthony@unfinishedteleporter.com>"
+  ],
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "eslint": "eslint --max-warnings 0",
+    "build": "tsc --build",
+    "build:watch": "tsc --build --watch",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^24.5.2",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-eslint-plugin": "^7.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^16.4.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.1"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.26.0"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "packageManager": "pnpm@10.15.1"
+}

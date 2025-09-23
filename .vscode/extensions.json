@@ -1,0 +1,25 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846 for the documentation
+  // about the extensions.json format
+  "recommendations": [
+    // NOTE: vscode-eslint and prettier-vscode are essentially required, the
+    //       rest are more or less in order of perceived usefulness.
+
+    // Summary: Integrates ESLint JavaScript into VS Code
+    // Reason: Used for all js and ts
+    "dbaeumer.vscode-eslint",
+
+    // Summary: Code formatter using prettier
+    // Reason: Used for json, jsonc, html, markdown, yaml
+    "esbenp.prettier-vscode"
+  ],
+
+  // List of extensions recommended by VS Code that should not be recommended
+  // for users of this workspace.
+  "unwantedRecommendations": [
+    // Summary: Forrmat js and ts code using the prettier-eslint package.
+    // Reason: We have a hook that forces all linting passes before commiting,
+    //         we don't want eslint --fix to be run on every save after prettier
+    "rvest.vs-code-prettier-eslint"
+  ]
+}

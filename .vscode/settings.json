@@ -1,0 +1,54 @@
+{
+  // Processed as a jsonc file, comments allowed
+  "files.exclude": {
+    "**/node_modules": true,
+    ".eslintcache": true
+  },
+  // Exclude from searches (the hidden files above are automatically excluded)
+  "search.exclude": {
+    "**/.git": true,
+    "**/build": true,
+    "**/tmp": true,
+    "**/*.lock": true
+  },
+  // This is consistent with the airbnb eslint rules we use
+  "editor.rulers": [80, 100],
+  // Never worry about missing semicolon again!
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Can set language specific settings here. We are explicit with some of these
+  // despite the global editor settings above because although settings override
+  // precedence is workspace > user, it is also language > global and objects
+  // are merged
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  // For the following, its ok if we have user level per language settings.
+  "[json]": {},
+  "[jsonc]": {},
+  "[html]": {},
+  "[yaml]": {},
+  "[markdown]": {
+    // Use markdownlint instead. For some reason editor.defaultFormatter won't
+    // work, but codeActionsOnSave does
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": "explicit"
+    }
+  },
+  // This ensures import paths are autocompleted without needing to use ctrl+space
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  // SPECIFIC TO: DBAEUMER.VSCODE-ESLINT
+  "eslint.format.enable": false // We use prettier for formatting
+}
