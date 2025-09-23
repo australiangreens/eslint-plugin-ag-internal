@@ -48,5 +48,11 @@
     "eslintplugin",
     "eslint-plugin"
   ],
-  "packageManager": "pnpm@10.15.1"
+  "packageManager": "pnpm@10.15.1",
+  "files": [
+    "dist",
+    "!*.tsbuildinfo",
+    "README.md",
+    "LICENSE"
+  ]
 }
