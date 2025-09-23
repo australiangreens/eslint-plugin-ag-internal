@@ -51,7 +51,7 @@
   "packageManager": "pnpm@10.15.1",
   "files": [
     "dist",
-    "!*.tsbuildinfo",
+    "!**/*.tsbuildinfo",
     "README.md",
     "LICENSE"
   ]
