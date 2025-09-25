@@ -19,7 +19,7 @@ const plugin = {
     version: pkg.version,
   },
   configs: {
-    recommended: defineConfig([
+    typescript: defineConfig([
       {
         name: 'js',
         extends: [jsEslint.configs.recommended],
