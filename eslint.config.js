@@ -11,17 +11,7 @@ import tsEslint from 'typescript-eslint';
 export default defineConfig([
   globalIgnores(['**/node_modules', '**/dist', '**/coverage']),
   {
-    files: ['**/*.ts'],
-  },
-  {
     languageOptions: {
-      parserOptions: {
-        projectService: {
-          allowDefaultProject: ['eslint.config.js'],
-          defaultProject: 'tsconfig.json',
-        },
-        ecmaFeatures: {},
-      },
       globals: {
         ...globals.browser,
         ...globals.node,
