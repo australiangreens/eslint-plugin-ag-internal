@@ -21,6 +21,8 @@ export default defineConfig([
 
   {
     name: 'eslint-plugin-eslint-plugin',
+    // @ts-expect-error Caused by an issue with @types/eslint-plugin-jsx-a11y
+    // See https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/73747
     extends: [eslintPlugin.configs.recommended],
     rules: {
       'eslint-plugin/require-meta-docs-description': 'error',
@@ -49,6 +51,7 @@ export default defineConfig([
     // It exports a named config object, but that causes errors
     // eslint-disable-next-line import/no-named-as-default-member
     extends: [tsEslint.configs.recommended],
+
     rules: {
       // Not enabled in recommended
       '@typescript-eslint/no-use-before-define': [
@@ -72,6 +75,8 @@ export default defineConfig([
   {
     // Linting of ES6+ import/export syntax
     name: 'import',
+    // @ts-expect-error Caused by an issue with @types/eslint-plugin-jsx-a11y
+    // See https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/73747
     extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
     rules: {
       'import/newline-after-import': 'error',

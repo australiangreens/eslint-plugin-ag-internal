@@ -30,5 +30,5 @@
     "excludeDirectories": ["**/node_modules"],
     "excludeFiles": []
   },
-  "include": ["src", "eslint.config.js"]
+  "include": ["src"]
 }
