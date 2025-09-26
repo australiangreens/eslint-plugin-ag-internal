@@ -17,12 +17,13 @@ export default defineConfig([
     },
   },
 
+  // @ts-expect-error Caused by an issue with @types/eslint-plugin-jsx-a11y
+  // See https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/73747
   selfPlugin.configs.typescript,
 
   {
     name: 'eslint-plugin-eslint-plugin',
-    // @ts-expect-error Caused by an issue with @types/eslint-plugin-jsx-a11y
-    // See https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/73747
+    // @ts-expect-error Save as above
     extends: [eslintPlugin.configs.recommended],
     rules: {
       'eslint-plugin/require-meta-docs-description': 'error',

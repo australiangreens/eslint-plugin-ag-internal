@@ -50,5 +50,8 @@
     "strings": true
   },
   // SPECIFIC TO: DBAEUMER.VSCODE-ESLINT
-  "eslint.format.enable": false // We use prettier for formatting
+  "eslint.format.enable": false, // We use prettier for formatting,
+
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.importModuleSpecifierEnding": "js"
 }
