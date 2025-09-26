@@ -1,14 +1,11 @@
 import { Linter } from 'eslint';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import { defineConfig } from 'eslint/config';
-import fs from 'fs';
 
 import javascriptConfig from './configs/javascript.js';
 import reactConfig from './configs/react.js';
 import typescriptConfig from './configs/typescript.js';
-
-// The relative path works from both src/ and dist/
-const pkg = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+import { pluginScopedName, pluginVersion } from './util.js';
 
 type ConfigName =
   | 'recommended'
@@ -31,8 +28,8 @@ const buildConfig = (...configs: Linter.Config[][]): Linter.Config[] =>
 
 const plugin: Plugin = {
   meta: {
-    name: pkg.name as string,
-    version: pkg.version as string,
+    name: pluginScopedName() as string,
+    version: pluginVersion() as string,
   },
   configs: {
     recommended: buildConfig(javascriptConfig, typescriptConfig),

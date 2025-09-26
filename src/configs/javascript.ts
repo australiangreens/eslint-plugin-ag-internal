@@ -1,12 +1,13 @@
 import jsEslint from '@eslint/js';
 import { Linter } from 'eslint';
 import importPlugin from 'eslint-plugin-import';
-import { defineConfig } from 'eslint/config';
 
-const config: Linter.Config[] = defineConfig([
+import { pluginName } from '../util.js';
+
+const config: Linter.Config[] = [
+  jsEslint.configs.recommended,
   {
-    name: 'js',
-    extends: [jsEslint.configs.recommended],
+    name: `${pluginName()}/eslint`,
     rules: {
       // Not enabled in recommended, we prefer to be more specific
       radix: ['error', 'as-needed'],
@@ -21,10 +22,10 @@ const config: Linter.Config[] = defineConfig([
     },
   },
 
+  importPlugin.flatConfigs.recommended,
+  importPlugin.flatConfigs.typescript,
   {
-    // Linting of ES6+ import/export syntax
-    name: 'import',
-    extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
+    name: `${pluginName()}/import`,
     rules: {
       'import/newline-after-import': 'error',
       'import/no-unresolved': 'error',
@@ -36,6 +37,6 @@ const config: Linter.Config[] = defineConfig([
       },
     },
   },
-]);
+];
 
 export default config;

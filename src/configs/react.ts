@@ -3,12 +3,12 @@ import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
-import { defineConfig } from 'eslint/config';
+import { pluginName } from '../util.js';
 
-const config: Linter.Config[] = defineConfig([
+const config: Linter.Config[] = [
+  jsxA11yPlugin.flatConfigs.strict,
   {
-    name: 'jsx-a11y',
-    extends: [jsxA11yPlugin.flatConfigs.strict],
+    name: `${pluginName()}/jsx-a11y`,
     rules: {
       // As of eslint-plugin-jsx-a11y v6 these rules are not enabled (since
       // they would be a breaking change). So lets enable them ourselves while
@@ -21,21 +21,13 @@ const config: Linter.Config[] = defineConfig([
     },
   },
 
+  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat['jsx-runtime'],
   {
-    name: 'react-related',
-    extends: [
-      reactPlugin.configs.flat.recommended,
-      reactPlugin.configs.flat['jsx-runtime'],
-      reactHooksPlugin.configs['recommended-latest'],
-      reactRefreshPlugin.configs.recommended,
-    ],
-
+    name: `${pluginName()}/react`,
     rules: {
       // Enforce destructuring for props instead of the props.foo pattern
       'react/destructuring-assignment': ['error', 'always'],
-
-      // [LIST-974] Disabled for now until we fix the issues it raises
-      'react-refresh/only-export-components': 'off',
     },
     settings: {
       // https://github.com/jsx-eslint/eslint-plugin-react#configuration
@@ -44,6 +36,17 @@ const config: Linter.Config[] = defineConfig([
       },
     },
   },
-]);
+
+  reactHooksPlugin.configs['recommended-latest'],
+
+  reactRefreshPlugin.configs.recommended,
+  {
+    name: `${pluginName()}/react-refresh`,
+    rules: {
+      // [LIST-974] Disabled for now until we fix the issues it raises
+      'react-refresh/only-export-components': 'off',
+    },
+  },
+];
 
 export default config;

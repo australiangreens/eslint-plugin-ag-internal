@@ -19,10 +19,11 @@ export default defineConfig([
 
   // @ts-expect-error Caused by an issue with @types/eslint-plugin-jsx-a11y
   // See https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/73747
-  selfPlugin.configs.typescript,
+  selfPlugin.configs.recommended,
 
   {
     name: 'eslint-plugin-eslint-plugin',
+    // @ts-expect-error Same issue as above
     extends: [eslintPlugin.configs.recommended],
     rules: {
       'eslint-plugin/require-meta-docs-description': 'error',

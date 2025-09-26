@@ -1,14 +1,13 @@
 import { Linter } from 'eslint';
-import tsdoc from 'eslint-plugin-tsdoc';
-import { defineConfig } from 'eslint/config';
-import tsEslint from 'typescript-eslint';
+import tsdocPlugin from 'eslint-plugin-tsdoc';
+import { configs as tsEslintConfigs } from 'typescript-eslint';
 
-const config: Linter.Config[] = defineConfig([
+import { pluginName } from '../util.js';
+
+const config: Linter.Config[] = [
+  ...tsEslintConfigs.recommended,
   {
-    name: 'ts',
-    // It exports a named config object, but that causes errors
-    // eslint-disable-next-line import/no-named-as-default-member
-    extends: [tsEslint.configs.recommended],
+    name: `${pluginName()}/typescript-eslint`,
     rules: {
       // Not enabled in recommended
       '@typescript-eslint/no-use-before-define': [
@@ -32,16 +31,16 @@ const config: Linter.Config[] = defineConfig([
   {
     // Provides single rule for validating that TypeScript doc comments conform
     // to the TSDoc specification
-    name: 'tsdoc',
+    name: `${pluginName()}/tsdoc`,
     // At time of writing tsdoc didn't have an exported flat config, but we can
     // import it as per https://github.com/microsoft/tsdoc/issues/374
     plugins: {
-      tsdoc: tsdoc,
+      tsdoc: tsdocPlugin,
     },
     rules: {
       'tsdoc/syntax': 'warn',
     },
   },
-]);
+];
 
 export default config;
