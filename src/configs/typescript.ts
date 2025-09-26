@@ -1,33 +1,9 @@
-import jsEslint from '@eslint/js';
 import { Linter } from 'eslint';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
-import importPlugin from 'eslint-plugin-import';
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import tsdoc from 'eslint-plugin-tsdoc';
 import { defineConfig } from 'eslint/config';
 import tsEslint from 'typescript-eslint';
 
 const config: Linter.Config[] = defineConfig([
-  {
-    name: 'js',
-    extends: [jsEslint.configs.recommended],
-    rules: {
-      // Not enabled in recommended, we prefer to be more specific
-      radix: ['error', 'as-needed'],
-
-      // Not enabled in recommended, we treat it as an error
-      'no-plusplus': [
-        'error',
-        {
-          allowForLoopAfterthoughts: true,
-        },
-      ],
-    },
-  },
-
   {
     name: 'ts',
     // It exports a named config object, but that causes errors
@@ -54,61 +30,6 @@ const config: Linter.Config[] = defineConfig([
   },
 
   {
-    name: 'jsx-a11y',
-    extends: [jsxA11yPlugin.flatConfigs.strict],
-    rules: {
-      // As of eslint-plugin-jsx-a11y v6 these rules are not enabled (since
-      // they would be a breaking change). So lets enable them ourselves while
-      // we wait for v7.
-      'jsx-a11y/lang': 'error',
-      'jsx-a11y/no-aria-hidden-on-focusable': 'error',
-
-      // TODO [LIST-981] Except for this one, have 6 errors
-      // 'jsx-a11y/prefer-tag-over-role': 'error',
-    },
-  },
-
-  {
-    name: 'react-related',
-    extends: [
-      reactPlugin.configs.flat.recommended,
-      reactPlugin.configs.flat['jsx-runtime'],
-      reactHooksPlugin.configs['recommended-latest'],
-      reactRefreshPlugin.configs.recommended,
-    ],
-
-    rules: {
-      // Enforce destructuring for props instead of the props.foo pattern
-      'react/destructuring-assignment': ['error', 'always'],
-
-      // [LIST-974] Disabled for now until we fix the issues it raises
-      'react-refresh/only-export-components': 'off',
-    },
-    settings: {
-      // https://github.com/jsx-eslint/eslint-plugin-react#configuration
-      react: {
-        version: 'detect',
-      },
-    },
-  },
-
-  {
-    // Linting of ES6+ import/export syntax
-    name: 'import',
-    extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
-    rules: {
-      'import/newline-after-import': 'error',
-      'import/no-unresolved': 'error',
-    },
-    settings: {
-      'import/resolver': {
-        typescript: true,
-        node: true,
-      },
-    },
-  },
-
-  {
     // Provides single rule for validating that TypeScript doc comments conform
     // to the TSDoc specification
     name: 'tsdoc',
@@ -121,10 +42,6 @@ const config: Linter.Config[] = defineConfig([
       'tsdoc/syntax': 'warn',
     },
   },
-
-  // Turns off all rules that are unnecessary or might conflict with Prettier,
-  // which we use for formatting.
-  eslintConfigPrettier,
 ]);
 
 export default config;
