@@ -23,7 +23,6 @@ export default defineConfig([
 
   {
     name: 'eslint-plugin-eslint-plugin',
-    // @ts-expect-error Save as above
     extends: [eslintPlugin.configs.recommended],
     rules: {
       'eslint-plugin/require-meta-docs-description': 'error',
