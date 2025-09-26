@@ -32,9 +32,16 @@ const plugin: Plugin = {
     version: pluginVersion() as string,
   },
   configs: {
+    /** All our rules for a typescript app, typically backend*/
     recommended: buildConfig(javascriptConfig, typescriptConfig),
+
+    /** Same as recommended but without any typescript rules */
     recommendedJsOnly: buildConfig(javascriptConfig),
+
+    /** Same as recommended but with the addition of react related rules */
     recommendedReact: buildConfig(javascriptConfig, typescriptConfig, reactConfig),
+
+    /** recommendedReact but without any typescript rules  */
     recommendedReactJsOnly: buildConfig(javascriptConfig, reactConfig),
   },
 };
