@@ -27,8 +27,14 @@ const config: Linter.Config[] = [
   {
     name: `${pluginName()}/import`,
     rules: {
+      // These are not incuded in the recommended config, we treat as errors
       'import/newline-after-import': 'error',
       'import/no-unresolved': 'error',
+
+      // These are warnings in recommended, we treat as errors
+      'import/no-named-as-default': 'error',
+      'import/no-named-as-default-member': 'error',
+      'import/no-duplicates': 'error',
     },
     settings: {
       'import/resolver': {

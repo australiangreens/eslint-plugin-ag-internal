@@ -37,7 +37,16 @@ const config: Linter.Config[] = [
     },
   },
 
+  // The plugin provides 2 hooks
   reactHooksPlugin.configs['recommended-latest'],
+  {
+    name: `${pluginName()}/react-hooks`,
+    rules: {
+      // This is a warning in recommended-latest, we treat as an error
+      'react-hooks/exhaustive-deps': 'error',
+      // The remaining rule, 'react-hooks/rules-of-hooks' is already an error
+    },
+  },
 
   reactRefreshPlugin.configs.recommended,
   {

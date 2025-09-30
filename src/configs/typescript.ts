@@ -38,7 +38,7 @@ const config: Linter.Config[] = [
       tsdoc: tsdocPlugin,
     },
     rules: {
-      'tsdoc/syntax': 'warn',
+      'tsdoc/syntax': 'error',
     },
   },
 ];
