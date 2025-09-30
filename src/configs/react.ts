@@ -39,7 +39,7 @@ const config: Linter.Config[] = [
     },
   },
 
-  // The plugin provides 2 hooks
+  // The plugin provides 2 rules
   reactHooksPlugin.configs['recommended-latest'],
   {
     name: `${pluginName()}/react-hooks`,
@@ -51,13 +51,6 @@ const config: Linter.Config[] = [
   },
 
   reactRefreshPlugin.configs.recommended,
-  {
-    name: `${pluginName()}/react-refresh`,
-    rules: {
-      // [LIST-974] Disabled for now until we fix the issues it raises
-      'react-refresh/only-export-components': 'off',
-    },
-  },
 
   // All recommended rules in eslint-plugin-react-you-might-not-need-an-effect
   // are enabled as warnings, unlike other plugins, we do not override this

@@ -23,6 +23,7 @@ const config: Linter.Config[] = [
   },
 
   importPlugin.flatConfigs.recommended,
+  // TODO: Is it possible to move the typescript stuff out of here and still work?
   importPlugin.flatConfigs.typescript,
   {
     name: `${pluginName()}/import`,
