@@ -4,7 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 
 import { pluginName } from '../util.js';
 
-const config: Linter.Config[] = [
+const javascriptRulesMinusImportPluginChange: Linter.Config[] = [
   jsEslint.configs.recommended,
   {
     name: `${pluginName()}/eslint`,
@@ -23,27 +23,22 @@ const config: Linter.Config[] = [
   },
 
   importPlugin.flatConfigs.recommended,
-  // TODO: Is it possible to move the typescript stuff out of here and still work?
-  importPlugin.flatConfigs.typescript,
-  {
-    name: `${pluginName()}/import`,
-    rules: {
-      // These are not incuded in the recommended config, we treat as errors
-      'import/newline-after-import': 'error',
-      'import/no-unresolved': 'error',
-
-      // These are warnings in recommended, we treat as errors
-      'import/no-named-as-default': 'error',
-      'import/no-named-as-default-member': 'error',
-      'import/no-duplicates': 'error',
-    },
-    settings: {
-      'import/resolver': {
-        typescript: true,
-        node: true,
-      },
-    },
-  },
 ];
 
-export default config;
+// We use this pattern so we don't need to define the rules both here and in
+// typescript.ts
+export const importPluginChange: Linter.Config = {
+  name: `${pluginName()}/import`,
+  rules: {
+    // These are not incuded in the recommended config, we treat as errors
+    'import/newline-after-import': 'error',
+    'import/no-unresolved': 'error',
+
+    // These are warnings in recommended, we treat as errors
+    'import/no-named-as-default': 'error',
+    'import/no-named-as-default-member': 'error',
+    'import/no-duplicates': 'error',
+  },
+};
+
+export default [...javascriptRulesMinusImportPluginChange, importPluginChange];

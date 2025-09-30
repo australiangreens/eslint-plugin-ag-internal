@@ -1,8 +1,10 @@
 import { Linter } from 'eslint';
+import importPlugin from 'eslint-plugin-import';
 import tsdocPlugin from 'eslint-plugin-tsdoc';
 import { configs as tsEslintConfigs } from 'typescript-eslint';
 
 import { pluginName } from '../util.js';
+import { importPluginChange } from './javascript.js';
 
 const config: Linter.Config[] = [
   ...tsEslintConfigs.recommended,
@@ -39,6 +41,17 @@ const config: Linter.Config[] = [
     },
     rules: {
       'tsdoc/syntax': 'error',
+    },
+  },
+
+  importPlugin.flatConfigs.typescript,
+  {
+    ...importPluginChange,
+    settings: {
+      'import/resolver': {
+        typescript: true,
+        node: true,
+      },
     },
   },
 ];

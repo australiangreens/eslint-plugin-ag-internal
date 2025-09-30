@@ -60,9 +60,6 @@ _warnings_. This may be changed in the future.
 -   [import plugin](https://www.npmjs.com/package/eslint-plugin-import-esm)'s
     recommended rules with the addition of 2 strict rules.
 
--   [import](https://www.npmjs.com/package/eslint-plugin-import-esm)
-    typescript rules. **TODO: Move to typescript config**.
-
 ### recommended
 
 All the rules from recommendedJsOnly with the addition of the following:
@@ -72,6 +69,9 @@ All the rules from recommendedJsOnly with the addition of the following:
 
 -   [tsdoc plugin](https://www.npmjs.com/package/eslint-plugin-tsdoc)'s single
     `tsdoc/syntax` rule enabled as _error_.
+
+-   [import](https://www.npmjs.com/package/eslint-plugin-import-esm)
+    typescript rules.
 
 ## recommendedReactJsOnly
 
