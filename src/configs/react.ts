@@ -3,6 +3,8 @@ import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
+import reactYouMightNotNeedAnEffectPlugin from 'eslint-plugin-react-you-might-not-need-an-effect';
+
 import { pluginName } from '../util.js';
 
 const config: Linter.Config[] = [
@@ -56,6 +58,11 @@ const config: Linter.Config[] = [
       'react-refresh/only-export-components': 'off',
     },
   },
+
+  // All recommended rules in eslint-plugin-react-you-might-not-need-an-effect
+  // are enabled as warnings, unlike other plugins, we do not override this
+  // for now
+  reactYouMightNotNeedAnEffectPlugin.configs.recommended,
 ];
 
 export default config;
