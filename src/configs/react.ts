@@ -39,14 +39,18 @@ const config: Linter.Config[] = [
     },
   },
 
-  // The plugin provides 2 rules
-  reactHooksPlugin.configs['recommended-latest'],
+  // reactHooksPlugin.configs.recommended references the plugin incorrectly as a
+  // string instead of an object, so won't work using our normal pattern.
+  // See https://github.com/facebook/react/issues/34679
+  // Luckily there are only two rules we just do it ourselves.
   {
     name: `${pluginName()}/react-hooks`,
+    plugins: {
+      'react-hooks': reactHooksPlugin,
+    },
     rules: {
-      // This is a warning in recommended-latest, we treat as an error
       'react-hooks/exhaustive-deps': 'error',
-      // The remaining rule, 'react-hooks/rules-of-hooks' is already an error
+      'react-hooks/rules-of-hooks': 'error',
     },
   },
 

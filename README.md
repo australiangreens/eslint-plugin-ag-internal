@@ -89,7 +89,7 @@ recommendedJsOnly with the addition of the following:
     jsx-runtime rules.
 
 -   [react-hooks plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks)'s
-    recommended-latest rules
+    two rules as errors.
 
 -   [react-refresh plugin](https://www.npmjs.com/package/eslint-plugin-react-refresh)'s
     single rule.
