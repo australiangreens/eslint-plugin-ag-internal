@@ -30,17 +30,10 @@ export default defineConfig([
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
-      parserOptions: {
-        project: true,
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
       globals: {
-        ...globals.browser,
         ...globals.jest,
         ...globals.vitest,
-        ...globals.node,
+        // globals.node and globals.browser will be merged in automatically
       },
     },
   },
@@ -59,6 +52,8 @@ the `react-you-might-not-need-an-effect/` namespace, which are currently only
 _warnings_. This may be changed in the future.
 
 ### recommendedJsOnly
+
+-   Includes `globals.node`.
 
 -   [eslint js plugin](https://www.npmjs.com/package/@eslint/js)'s recommended
     rules with some changes to `radix` and `no-plusplus`.
@@ -82,6 +77,8 @@ All the rules from recommendedJsOnly with the addition of the following:
 ## recommendedReactJsOnly
 
 recommendedJsOnly with the addition of the following:
+
+-   Includes `globals.browser`.
 
 -   [jsx-a11y plugin](https://www.npmjs.com/package/@types/eslint-plugin-jsx-a11y)'s
     strict rules with some extras that won't be enabled by default until a

@@ -2,20 +2,11 @@
 
 import eslintPlugin from 'eslint-plugin-eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
-import globals from 'globals';
 
 import selfPlugin from './src';
 
 export default defineConfig([
   globalIgnores(['**/node_modules', '**/dist', '**/coverage']),
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-    },
-  },
 
   // @ts-expect-error Caused by an issue with @types/eslint-plugin-jsx-a11y
   // See https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/73747

@@ -1,10 +1,19 @@
 import jsEslint from '@eslint/js';
 import { Linter } from 'eslint';
 import importPlugin from 'eslint-plugin-import';
+import globals from 'globals';
 
 import { pluginName } from '../util.js';
 
 const javascriptRulesMinusImportPluginChange: Linter.Config[] = [
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+
   jsEslint.configs.recommended,
   {
     name: `${pluginName()}/eslint`,

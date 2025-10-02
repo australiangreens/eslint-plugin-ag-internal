@@ -4,10 +4,19 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import reactYouMightNotNeedAnEffectPlugin from 'eslint-plugin-react-you-might-not-need-an-effect';
+import globals from 'globals';
 
 import { pluginName } from '../util.js';
 
 const config: Linter.Config[] = [
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+
   jsxA11yPlugin.flatConfigs.strict,
   {
     name: `${pluginName()}/jsx-a11y`,
