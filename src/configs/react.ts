@@ -39,18 +39,15 @@ const config: Linter.Config[] = [
     },
   },
 
-  // reactHooksPlugin.configs.recommended references the plugin incorrectly as a
-  // string instead of an object, so won't work using our normal pattern.
-  // See https://github.com/facebook/react/issues/34679
-  // Luckily there are only two rules we just do it ourselves.
+  // The plugin provides 2 rules
+  // @ts-expect-error The configs property is missing from the type declaration
+  reactHooksPlugin.configs['flat/recommended'],
   {
     name: `${pluginName()}/react-hooks`,
-    plugins: {
-      'react-hooks': reactHooksPlugin,
-    },
     rules: {
+      // This is a warning in recommended-latest, we treat as an error
       'react-hooks/exhaustive-deps': 'error',
-      'react-hooks/rules-of-hooks': 'error',
+      // The remaining rule, 'react-hooks/rules-of-hooks' is already an error
     },
   },
 
