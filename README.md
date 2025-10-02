@@ -30,6 +30,12 @@ export default defineConfig([
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
+      parserOptions: {
+        project: true,
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       globals: {
         ...globals.browser,
         ...globals.jest,
