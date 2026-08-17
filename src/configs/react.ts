@@ -2,7 +2,7 @@ import { Linter } from 'eslint';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import reactRefreshPlugin from 'eslint-plugin-react-refresh';
+import { reactRefresh } from 'eslint-plugin-react-refresh';
 import reactYouMightNotNeedAnEffectPlugin from 'eslint-plugin-react-you-might-not-need-an-effect';
 import globals from 'globals';
 
@@ -41,26 +41,25 @@ const config: Linter.Config[] = [
       'react/destructuring-assignment': ['error', 'always'],
     },
     settings: {
-      // https://github.com/jsx-eslint/eslint-plugin-react#configuration
+      // Pin an explicit version: `detect` calls `context.getFilename()`, removed in ESLint 10.
+      // eslint-plugin-react 7.37.5 has no ESLint 10 release yet.
       react: {
-        version: 'detect',
+        version: '19',
       },
     },
   },
 
-  // The plugin provides 2 rules
-  // @ts-expect-error The configs property is missing from the type declaration
-  reactHooksPlugin.configs['flat/recommended'],
+  reactHooksPlugin.configs.flat.recommended,
   {
     name: `${pluginName()}/react-hooks`,
     rules: {
-      // This is a warning in recommended-latest, we treat as an error
+      // This is a warning in recommended, we treat as an error
       'react-hooks/exhaustive-deps': 'error',
       // The remaining rule, 'react-hooks/rules-of-hooks' is already an error
     },
   },
 
-  reactRefreshPlugin.configs.recommended,
+  reactRefresh.configs.recommended(),
 
   // All recommended rules in eslint-plugin-react-you-might-not-need-an-effect
   // are enabled as warnings, unlike other plugins, we do not override this

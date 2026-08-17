@@ -2,12 +2,12 @@
 
 A collection of eslint rules we use across our JS and TS applications.
 
-This is intended to strictly be an ESM-only package for eslint 9+ with the flat
+This is intended to strictly be an ESM-only package for eslint 10+ with the flat
 config. No attempt has been made for backwards compatibility.
 
 ## Usage
 
-There is a single peer dependency `eslint` version 9.26.0 or above.
+There is a single peer dependency `eslint` version 10.0.0 or above.
 Requires Node.js 24 or later.
 
 In a simple React application with a standard structure the minimal

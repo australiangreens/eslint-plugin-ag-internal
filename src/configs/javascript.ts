@@ -50,4 +50,6 @@ export const importPluginChange: Linter.Config = {
   },
 };
 
-export default [...javascriptRulesMinusImportPluginChange, importPluginChange];
+const config: Linter.Config[] = [...javascriptRulesMinusImportPluginChange, importPluginChange];
+
+export default config;
