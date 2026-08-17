@@ -8,6 +8,7 @@ config. No attempt has been made for backwards compatibility.
 ## Usage
 
 There is a single peer dependency `eslint` version 9.26.0 or above.
+Requires Node.js 24 or later.
 
 In a simple React application with a standard structure the minimal
 `eslint.config.js` file will look like:
@@ -104,3 +105,12 @@ recommendedJsOnly with the addition of the following:
 
 All the rules in recommendedReactJsOnly with the new ones that recommended
 brings.
+
+## Releasing
+
+```sh
+pnpm release patch   # or minor | major — versions, commits, and pushes tags
+pnpm ship            # publishes to the registry (after checks pass)
+```
+
+`prepublishOnly` runs lint, tests, and a production build before publish.

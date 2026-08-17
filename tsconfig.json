@@ -5,6 +5,7 @@
     "target": "ES2022",
     "noImplicitAny": true,
     "moduleResolution": "NodeNext",
+    "rootDir": "./src",
     "outDir": "dist",
     "baseUrl": ".",
     "declaration": true,
@@ -15,7 +16,8 @@
     "types": ["node"],
     "sourceMap": false,
     "declarationMap": false,
-    "allowJs": true
+    "allowJs": true,
+    "ignoreDeprecations": "6.0"
   },
 
   "watchOptions": {
